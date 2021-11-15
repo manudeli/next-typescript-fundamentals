@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { NextPageContext } from 'next'
 import { Post } from '../../interfaces'
+import Link from 'next/link'
 
 export const getServerSideProps = async (context: NextPageContext) => {
   const postId = context.query.id
@@ -29,6 +30,12 @@ const PostPage = ({ post }: Props) => {
     <div>
       <h1>{post.title}</h1>
       <p>{post.body}</p>
+      <Link href="/">
+        <a>[Go to home]</a>
+      </Link>
+      {/* eslint-disable */}
+      {/* SSR과 CSR을 비교해보자 */}
+      <a href="/">[Go to home]</a>
     </div>
   )
 }
